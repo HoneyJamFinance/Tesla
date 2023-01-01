@@ -36,6 +36,15 @@ while True:
         complete_number = int(user_input[9])
         print(f"You have completed {complete_number} - {todos[complete_number-1]}")
         todos.pop(complete_number-1)
+
+        functions.write_todos(todos)
+
         print("This is the remaining todo list")
 
         functions.show_todos(todos)
+
+    elif user_input.startswith("exit"):
+        break
+
+    else:
+        print("Your input is not valid")
