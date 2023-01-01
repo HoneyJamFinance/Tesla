@@ -2,8 +2,9 @@ import PySimpleGUI as sg
 import zipfile
 
 # Create the layout for the GUI
-layout = [[sg.Text('Enter the name of the file to zip:'), sg.InputText()],
+layout = [[sg.Text('Select the file to zip:'), sg.FileBrowse()],
           [sg.Text('Enter the name of the zip file:'), sg.InputText()],
+          [sg.Text('Select the destination for the zip file:'), sg.FolderBrowse()],
           [sg.Button('Create Zip'), sg.Button('Cancel')]]
 
 # Create the window
@@ -15,7 +16,7 @@ while True:
 
     # If the 'Create Zip' button is clicked, create the zip file
     if event == 'Create Zip':
-        with zipfile.ZipFile(values[1], 'w') as myzip:
+        with zipfile.ZipFile(values[2] + '/' + values[1], 'w') as myzip:
             myzip.write(values[0])
         sg.popup('Zip file created successfully!')
         break
