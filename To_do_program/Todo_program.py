@@ -4,7 +4,10 @@
 # 3. To get familiar and utilize git utility
 
 import functions
+import time
 
+now = time.strftime("%c")
+print("It is", now)
 todos = functions.get_todos()
 
 while True:
@@ -13,6 +16,7 @@ while True:
     if user_input.startswith("add"):
         todo = user_input[4:]
         todos.append(todo+'\n')
+        print("This is your current todo list")
         functions.show_todos(todos)
 
         functions.write_todos(todos)
